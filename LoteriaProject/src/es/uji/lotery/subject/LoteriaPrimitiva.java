@@ -31,8 +31,11 @@ public class LoteriaPrimitiva implements ILoteria{
 		
 	}
 
-	public void registrarObervador(Object obj , IObserver observador) {
-		jugadores.add(observador);
+	public void registrarObervador(IObserver observador) {
+		if(observador.getClass().getName().equals("Jugador"))
+			jugadores.add(observador);
+		else
+			periodicos.add(observador);
 		
 	}
 

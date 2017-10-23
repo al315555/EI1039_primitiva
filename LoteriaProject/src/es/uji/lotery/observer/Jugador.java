@@ -26,7 +26,9 @@ public class Jugador implements IJugador {
 
 	public void actualizar(String loteria, int[] boletoAComparar) {
 		try{
-			System.out.println("Soy "+nombre+ " y he acertado "+ numeroAciertos(boletoAComparar) +" números.");
+//			System.out.println("Soy "+nombre+ " y he acertado "+ numeroAciertos(boletoAComparar) +" números.");
+			for(IObserver periodico:periodicos)
+				periodico.actualizar(nombre+"_"+numeroAciertos(boletoAComparar), boleto);
 		}catch(Exception ex){
 			System.out.println("--ERROR INESPERADO--");
 			ex.printStackTrace();
