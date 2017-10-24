@@ -18,22 +18,25 @@ public class Periodico implements IObserver{
 		}
 	}
 	
+	/**
+	** Los números del sorteo 
+	** El número de acertantes de 3, 4, 5 y 6 números
+	**/
+	
 	public void show(){
 		
 		System.out.print("El sorteo con numeros: {{ ");
 		for(int i = 1; i<ILoteria.LENGTH;i++){
 			System.out.print(" "+boletoPremiado[i] +" ");
 		}
-		System.out.println(" }} ha tenido como premiados a: \n\n");
+		System.out.println(" }} ha tenido como premiados a: \n");
 		
 		for(String j: jugadores){
 			String[] strWords = j.split("_");
 			if(Integer.parseInt(strWords[1])>2)
-				System.out.println("\t\t"+strWords[0] + " con "+strWords[1]+" números acertados.");
+				System.out.println("\t"+strWords[0] + " con "+strWords[1]+" números acertados.");
 		}
-		/**los números del sorteo 
-		**el número de acertantes de 3, 4, 5 y 6 números
-		**/
+		System.out.println();
 	}
 
 

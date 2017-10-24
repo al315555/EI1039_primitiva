@@ -36,7 +36,7 @@ public class Main {
 				int jugadoresCreados = 0;
 				while(jugadoresCreados < NUM_JUGADORES){
 					
-					String nombre = "Soy el jugador número "+
+					String nombre = "Jugador número "+
 					jugadoresCreados++;
 					
 					int[] boletoAJugar = new int[ILoteria.LENGTH];
