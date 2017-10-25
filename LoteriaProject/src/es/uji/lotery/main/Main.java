@@ -16,10 +16,10 @@ public class Main {
 	private static final int NUM_JUGADORES=1000;
 	
 	public static void main(String[] args) {
+		System.out.println("Enter para nuevo sorteo, -1 para finalizar: ");
 		try{
 			Scanner sc = new Scanner(System.in);
 			String cadenaInput=sc.nextLine();
-			System.out.println("Enter para nuevo sorteo, -1 para finalizar: ");
 			
 			while(cadenaInput.equals("") && !cadenaInput.trim().equals("-1")){
 				
