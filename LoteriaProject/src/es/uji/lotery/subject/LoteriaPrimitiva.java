@@ -3,12 +3,13 @@ package es.uji.lotery.subject;
 import java.util.ArrayList;
 import java.util.Random;
 
+import es.uji.lotery.notificator.INotificator;
 import es.uji.lotery.observer.IObserver;
 
 public class LoteriaPrimitiva implements ILoteria{
 
 	private ArrayList<IObserver> jugadores = new ArrayList<IObserver>();
-	private ArrayList<IObserver> periodicos = new ArrayList<IObserver>();
+	private ArrayList<INotificator> notificadores = new ArrayList<INotificator>();
 	private int[] boletoPremiado= new int[LENGTH];
 	
 	public LoteriaPrimitiva(){
@@ -35,7 +36,7 @@ public class LoteriaPrimitiva implements ILoteria{
 		if(observador.getClass().getName().equals("Jugador"))
 			jugadores.add(observador);
 		else
-			periodicos.add(observador);
+			notificadores.add((INotificator)observador);
 		
 	}
 
@@ -46,16 +47,16 @@ public class LoteriaPrimitiva implements ILoteria{
 	public void notificar() {
 		for(IObserver jugador: jugadores)
 			jugador.actualizar("loteria",boletoPremiado);
-		for(IObserver periodico:periodicos )
+		for(IObserver periodico:notificadores )
 			periodico.actualizar("loteria",boletoPremiado);
 	}
 
-	public ArrayList<IObserver> getPeriodicos() {
-		return periodicos;
+	public ArrayList<INotificator> getNotificadores() {
+		return notificadores;
 	}
 
-	public void setPeriodicos(ArrayList<IObserver> periodicos) {
-		this.periodicos = periodicos;
+	public void setNotificadores(ArrayList<INotificator> periodicos) {
+		this.notificadores = periodicos;
 	}
 
 }

@@ -3,17 +3,19 @@ package es.uji.lotery.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.uji.lotery.notificator.INotificator;
+
 public class Jugador implements IJugador {
 	
 	private String nombre;
 	private int[] boleto;
 	
-	private List<IObserver> periodicos; 
+	private List<INotificator> notificadores; 
 	
 	public Jugador(String nombre, int[] boleto){
 		this.setNombre(nombre);
 		this.boleto=boleto;
-		this.setPeriodicos(new ArrayList<IObserver>());
+		this.setPeriodicos(new ArrayList<INotificator>());
 	}
 
 	public int numeroAciertos(int[] boletoAComparar) throws Exception{
@@ -27,7 +29,7 @@ public class Jugador implements IJugador {
 	public void actualizar(String loteria, int[] boletoAComparar) {
 		try{
 //			System.out.println("Soy "+nombre+ " y he acertado "+ numeroAciertos(boletoAComparar) +" números.");
-			for(IObserver periodico:periodicos)
+			for(IObserver periodico:notificadores)
 				periodico.actualizar(nombre+"_"+numeroAciertos(boletoAComparar), boleto);
 		}catch(Exception ex){
 			System.out.println("--ERROR INESPERADO--");
@@ -44,25 +46,26 @@ public class Jugador implements IJugador {
 	}
 
 	public void registrarObervador(IObserver periodicoObservador) {
-		periodicos.add(periodicoObservador);
+		notificadores.add((INotificator)periodicoObservador);
 		
 	}
 
 	public void eliminarObservador(IObserver observador) throws Exception {
-		periodicos.remove(observador);
+		notificadores.remove(observador);
 	}
 
 	public void notificar() {
-		for(IObserver periodico: periodicos)
+		for(IObserver periodico: notificadores)
 			periodico.actualizar(nombre, boleto);
 		
 	}
 
-	public List<IObserver> getPeriodicos() {
-		return periodicos;
+	public List<INotificator> getPeriodicos() {
+		return notificadores;
 	}
 
-	public void setPeriodicos(List<IObserver> periodicos) {
-		this.periodicos = periodicos;
+	public void setPeriodicos(List<INotificator> periodicos) {
+		this.notificadores = periodicos;
 	}
+
 }

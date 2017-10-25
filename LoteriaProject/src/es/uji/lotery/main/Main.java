@@ -5,9 +5,10 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
 
+import es.uji.lotery.notificator.INotificator;
+import es.uji.lotery.notificator.Periodico;
 import es.uji.lotery.observer.IObserver;
 import es.uji.lotery.observer.Jugador;
-import es.uji.lotery.observer.Periodico;
 import es.uji.lotery.subject.ILoteria;
 import es.uji.lotery.subject.LoteriaPrimitiva;
 
@@ -29,7 +30,7 @@ public class Main {
 							);
 				
 				LoteriaPrimitiva primitiva = new LoteriaPrimitiva();
-				Periodico periodico = new Periodico();
+				INotificator periodico = new Periodico();
 				
 				primitiva.registrarObervador(periodico);
 				

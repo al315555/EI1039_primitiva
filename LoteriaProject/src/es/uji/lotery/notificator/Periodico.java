@@ -1,10 +1,11 @@
-package es.uji.lotery.observer;
+package es.uji.lotery.notificator;
 
 import java.util.ArrayList;
 
+import es.uji.lotery.observer.IObserver;
 import es.uji.lotery.subject.ILoteria;
 
-public class Periodico implements IObserver{
+public class Periodico implements INotificator{
 
 	private int[] boletoPremiado; 
 	private ArrayList<String> jugadores=new ArrayList<String>();
